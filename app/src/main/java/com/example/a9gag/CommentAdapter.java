@@ -7,7 +7,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class CommentAdapter extends RecyclerView.Adapter<CommentItemViewHolder> {
+
+    List<CommentItem> items;
+
+    public CommentAdapter(List<CommentItem> items) {
+        this.items = items;
+    }
+
     @NonNull
     @Override
     public CommentItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -18,10 +27,19 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentItemViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull CommentItemViewHolder holder, int position) {
+        CommentItem item = items.get(position);
+        holder.txtContent.setText(item.content);
+        holder.txtDate.setText(item.date);
+        holder.txtUsername.setText(item.username);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return items.size();
+    }
+
+    public void addComment(CommentItem item) {
+        this.items.add(item);
+        this.notifyItemInserted(items.size());
     }
 }

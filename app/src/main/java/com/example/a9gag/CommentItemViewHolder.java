@@ -14,7 +14,6 @@ public class CommentItemViewHolder extends RecyclerView.ViewHolder {
     public CommentItemViewHolder(@NonNull View itemView) {
         super(itemView);
         initFields(itemView);
-
     }
 
     private void initFields(@NonNull View itemView) {
